@@ -16,13 +16,9 @@ body {
 
 .app {
     background-color: $offwhite;
-    .map-space {
+    .donut-space {
         height: 95vh;
         width: 100%;
 
-        .map-container {
-            height: 95vh;
-            width: 100%;
-        }
     }
 }
