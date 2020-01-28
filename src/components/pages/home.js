@@ -4,9 +4,6 @@ import axios from "axios"
 import Card from "./donut-card"
 
 
-
-
-
 export default function DonutSpace() {
 
     const [users, setUsers ] = useState([])

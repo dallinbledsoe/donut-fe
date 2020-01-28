@@ -1,49 +1,51 @@
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
+import React from "react";
+import {  useRoutes, A  } from "hookrouter"
 
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Auth from "./pages/auth";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <div className="page-wrapper">
-          <Router>
-            <div className="navbar">
-              <h1>Donut Shop</h1>
-              <div className="nav-links-wrapper">
-                <NavLink to="/" activeClassName="nav-link-active">
-                  Home
-                </NavLink>
-                <NavLink to="/about" activeClassName="nav-link-active">
-                  About
-                </NavLink>
-                <NavLink to="/contact" activeClassName="nav-link-active">
-                  Contact Us
-                </NavLink>
-              </div>
-              <div className="login">user</div>
-            </div>
-
-            <div className="page-content">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/auth" component={Auth} />
-              </Switch>
-            </div>
-          </Router>
-        </div>
-      </div>
-    );
-  }
+const routes = {
+  "/": () => <Home/>,
+  "/about": () => <About/>,
+  "/contact": () => <Contact/>,
+  "/auth": () => <Auth/>
 }
+
+
+function App() {
+  return (
+    <div className="app">
+      <div className="nav-bar-wrapper">
+
+        <div className="logo">
+          Donut shop
+        </div>
+
+        <div className="nav-links-wrapper">
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/">Home</A>
+          </div>
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/about">About</A>
+          </div>
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/contact">Contact</A>
+          </div>
+        </div>
+
+        <div className="login">
+          Placeholder-logged in status
+        </div>
+
+      </div>
+
+      <div className="map-space">
+        {useRoutes(routes)}
+      </div>
+  </div>
+  )
+}
+
+export default App

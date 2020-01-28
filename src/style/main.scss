@@ -1,37 +1,28 @@
-html {
-  font-size: 62.5%; // 1rem is 10px
-}
-
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-  font-family: "montserrat";
-}
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./nav-bar.scss";
+@import "./donut-space.scss";
 
 body {
-  overflow-x: hidden;
-  font-weight: normal;
+    margin: 0px;
+    overflow-x: hidden;
+    font-weight: normal;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .app {
-  margin-top: 2rem;
-  display: grid;
-  justify-items: center;
+    background-color: $offwhite;
+    .map-space {
+        height: 95vh;
+        width: 100%;
 
-  .page-wrapper {
-    width: 100%;
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 2px solid blue;
+        .map-container {
+            height: 95vh;
+            width: 100%;
+        }
     }
-  }
 }
