@@ -6,12 +6,11 @@ export default function Card(props) {
   return (
     <div className="profile-card">
         <div className="profile-image">
-            <img src={props.user.image_url}/>
+            <img src={props.donut.image_url}/>
         </div>
-        <h2>{props.user.name}</h2>
-        <h3 style={{textAlign: "center"}}>{props.user.description}</h3>
-        <h3>TYPE: {props.user._type}</h3>
-      
+        <h2>{props.donut.name}</h2>
+        <h3>Price ${props.donut.price}</h3>
+        <h3 style={{textAlign: "center"}}>{props.donut.description}</h3>
     </div>
   );
 }

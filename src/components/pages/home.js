@@ -6,12 +6,13 @@ import Card from "./donut-card"
 
 export default function DonutSpace() {
 
-    const [users, setUsers ] = useState([])
+    const [donuts, setDonuts ] = useState([])
 
     React.useEffect(() => {
-        axios.get("http://localhost:5000/profiles")
+        axios.get("https://donut-be.herokuapp.com/donuts")
         .then(response => {
-            setUsers(response.data)
+            console.log(response.data)
+            setDonuts(response.data)
             console.log(response)
         })
         .catch(error => {
@@ -20,13 +21,12 @@ export default function DonutSpace() {
     }, [])
     
     const readDb = () => {
-       return users.map(user => {
+       return donuts.map(donut => {
             return (
-                <div key={user.id} className="card-button-wrapper">
-                    <Card user={user}/>
-                    <button className="action-button">{user.action}</button>
+                <div key={donuts.id} className="card-button-wrapper">
+                    <Card donut={donut}/>
+                    <button className="order-button">Order placeholder</button>
                 </div>
-                
             )
             
         })
