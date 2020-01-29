@@ -1,0 +1,51 @@
+.about-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    
+    .left-column {
+        .about-image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        // padding: 20px 60px;
+
+        .heading {
+            
+            
+        }
+
+        .body-text {
+            font-size: 1.3rem;
+            margin: 20px;
+        }
+            
+        .section {
+            font-family: brandon-grotesque, sans-serif;
+            font-style: normal;
+            font-weight: 100;
+        }
+
+
+        em {
+            
+            font-style: normal;
+            font-size: 150%;
+            line-height: 134%;
+            color: #d01f2f;
+            display: block;
+        }
+    }
+}
+
+
+
