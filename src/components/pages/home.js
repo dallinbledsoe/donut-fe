@@ -4,8 +4,7 @@ import axios from "axios"
 import Card from "./donut-card"
 
 
-export default function DonutSpace() {
-
+export default function DonutSpace(props) {
     const [donuts, setDonuts ] = useState([])
 
     React.useEffect(() => {
@@ -24,7 +23,7 @@ export default function DonutSpace() {
        return donuts.map(donut => {
             return (
                 <div key={donuts.id} className="card-button-wrapper">
-                    <Card donut={donut}/>
+                    <Card donut={donut} loggedInStatus={props.loggedInStatus}/>
                     <button className="order-button">Order placeholder</button>
                 </div>
             )

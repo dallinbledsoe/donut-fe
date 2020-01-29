@@ -35,5 +35,14 @@
             width: 100px;
             border-radius: 50px;
         }
+
+        .bottom-container {
+            display: flex;
+            align-items: center;
+
+            .add-donut {
+                margin-left: 10px;
+            }
+        }
     }
 }

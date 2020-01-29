@@ -6,18 +6,20 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Auth from "./pages/auth";
+import Icons from "./helpers/icons"
 
 
 function App() {
-
+  Icons()
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
+  
 
   useEffect(() => {
     checkLoginStatus()
   }, [])
 
   const routes = {
-    "/": () => <Home/>,
+    "/": () => <Home loggedInStatus={loggedInStatus}/>,
     "/about": () => <About/>,
     "/contact": () => <Contact/>,
     "/auth": () => <Auth/>
@@ -25,7 +27,7 @@ function App() {
   
   const authorizedRoutes = {
     "/InventoryManager": () => <InventoryManager/>,
-    "/": () => <Home/>,
+    "/": () => <Home loggedInStatus={loggedInStatus}/>,
     "/about": () => <About/>,
     "/contact": () => <Contact/>,
     "/auth": () => <Auth/>
