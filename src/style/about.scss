@@ -20,20 +20,91 @@
         // padding: 20px 60px;
 
         .heading {
-            
+           
+            h1 {
+                font-family: "BrandonGrotesque-Black", Arial, Helvetica, sans-serif;
+                font-size: 200%;
+                line-height: 125%;
+                color:
+                #0b6a38;
+                display: block;
+                margin: 0 auto;
+                    margin-top: 0px;
+                text-transform: uppercase;
+
+                margin-bottom: 20px;
+            }
+            .happy {
+                font-size: 400%;
+                line-height: 100%;
+                margin-top: 10px;
+            }
             
         }
 
         .body-text {
             font-size: 1.3rem;
             margin: 20px;
+
+            .our {
+                display: flex;
+
+
+                .copy {
+
+                    strong {
+                        font-family: "BrandonGrotesque-Black", Arial, Helvetica, sans-serif;
+                    font-size: 150%;
+                    line-height: 117%;
+                    color:
+                    #0b6a38;
+                    display: block;
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                    }
+
+                    p {
+                        font-family: "FrutigerLTCom-Roman", Arial, Helvetica, sans-serif;
+                        font-size: 88%;
+                        line-height: 172%;
+                        color:
+                        #595959;
+                        margin: 8px 0 32px;
+                        font-style: italic;
+                    }
+                    
+                }
+            }
         }
             
-        .section {
-            font-family: brandon-grotesque, sans-serif;
-            font-style: normal;
-            font-weight: 100;
+        .donut {
+            .copy {
+                font-family: brandon-grotesque, sans-serif;
+                font-style: normal;
+                font-weight: 100;
+                color: #0b6a38;
+                text-align: left;
+
+                strong {
+                    font-size: 250%;
+                    line-height: 120%;
+                }
+
+                strong:last-of-type {
+                    color: #d01f2f;
+                }
+    
+                p {
+                    font-family: "FrutigerLTCom-Roman", Arial, Helvetica, sans-serif;
+                    font-size: 88%;
+                    line-height: 172%;
+                    color:#595959;
+                    margin: 8px 0;
+                    width:200px;
+                }
+            }
         }
+        
 
 
         em {

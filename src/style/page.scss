@@ -25,6 +25,7 @@ html {
     margin-top: 2rem;
     display: grid;
     justify-items: center;
+    // background-color: $offwhite;
   
     .page-wrapper {
       width: 100%;
@@ -34,5 +35,10 @@ html {
         border-bottom: 2px solid blue;
       }
     }
+    .donut-space {
+      height: 95vh;
+      width: 100%;
+
   }
+}
   
