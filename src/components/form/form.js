@@ -4,6 +4,8 @@ import DropzoneComponent from "react-dropzone-component";
 
 import RichTextEditor from "../forms/rich-text-editor";
 
+// WHATS THE DILL
+
 export default class BlogForm extends Component {
   constructor(props) {
     super(props);
