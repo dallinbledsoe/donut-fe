@@ -3,11 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Card(props) {
   const [ blogModalIsOpen, setBlogModalIsOpen ] = useState(false)
+  const [ blogItems, setBlogItems ] = useState([])
 
   const handleNewBlogClick = () => {
     setBlogModalIsOpen(true)
   }
 
+  const handleDeleteClick = (blog) => {
+    axios.delete(`https://donut-be.herokuapp.com/donut/${props.donut.id}`, {withCredentials: true}).then(response => {
+        console.log("RESPONSE", response)
+        setBlogItems(blogItems.filter(blogItem => {
+                return blog.id !== blogItem.id
+        }))
+    })
+    .catch(error => {
+        console.log("handleDeleteClick error", error)
+    })
+}
 
   return (
     <div className="profile-card">
