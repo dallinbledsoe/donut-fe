@@ -1,51 +1,97 @@
-import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {  useRoutes, A  } from "hookrouter"
+import axios from "axios"
 
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Auth from "./pages/auth";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <div className="page-wrapper">
-          <Router>
-            <div className="navbar">
-              <div className="page-title">
-                <h1>Donut Shop</h1>
-              </div>
-              <div className="nav-links-wrapper">
-                <NavLink to="/" activeClassName="nav-link-active">
-                  Home
-                </NavLink>
-                <NavLink to="/about" activeClassName="nav-link-active">
-                  About
-                </NavLink>
-                <NavLink to="/contact" activeClassName="nav-link-active">
-                  Contact Us
-                </NavLink>
-              </div>
-              <div className="login">user</div>
-            </div>
 
-            <div className="page-content">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/auth" component={Auth} />
-              </Switch>
-            </div>
-          </Router>
-        </div>
-      </div>
-    );
+function App() {
+
+  const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN")
+
+  useEffect(() => {
+    checkLoginStatus()
+  }, [])
+
+  const routes = {
+    "/": () => <Home/>,
+    "/about": () => <About/>,
+    "/contact": () => <Contact/>,
+    "/auth": () => <Auth/>
   }
+  
+  const authorizedRoutes = {
+    "/InventoryManager": () => <InventoryManager/>,
+    "/": () => <Home/>,
+    "/about": () => <About/>,
+    "/contact": () => <Contact/>,
+    "/auth": () => <Auth/>
+  }
+  
+  const handleSuccessfulLogin = () => {
+    setLoggedInStatus("LOGGED_IN")
+  }
+  
+  const handleUnsuccessfulLogin = () => {
+    setLoggedInStatus("NOT_LOGGED_IN")
+  }
+  
+  const handleSuccessfulLogout = () => {
+    setLoggedInStatus("NOT_LOGGED_IN")
+  }
+  
+  const checkLoginStatus = () => {
+    return axios.get("https://api.devcamp.space/logged_in", { withCredentials: true }).then(response => {
+      const loggedIn = response.data.logged_in;
+  
+      if (loggedIn && loggedInStatus === "LOGGED_IN") {
+        return loggedIn;
+      } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
+        setLoggedInStatus("NOT_LOGGED_IN")
+      } else if (!loggedIn && loggedInStatus === "LOGGED_IN") {
+        setLoggedInStatus("NOT_LOGGED_IN")
+      } 
+    })
+    .catch(error => {
+      console.log("Error:", error)
+    })
+  }
+
+
+  return (
+    <div className="app">
+      <div className="nav-bar-wrapper">
+
+        <div className="logo">
+          Donut shop
+        </div>
+
+        <div className="nav-links-wrapper">
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/">Home</A>
+          </div>
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/about">About</A>
+          </div>
+          <div className="nav-link-wrapper">
+            <A className="nav-link-btn" href="/contact">Contact</A>
+          </div>
+        </div>
+
+        <div className="login">
+          {loggedInStatus}
+        </div>
+
+      </div>
+
+      <div className="donut-space">
+        {loggedInStatus === "LOGGED_IN" ? useRoutes(authorizedRoutes) : useRoutes(routes)}
+      </div>
+  </div>
+  )
 }
+
+export default App
