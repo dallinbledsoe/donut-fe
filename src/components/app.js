@@ -30,6 +30,37 @@ function App() {
     "/auth": () => <Auth />
   };
 
+  const handleDeleteClick = (donut) => {
+    axios
+      .delete(`https://https://donut-be.herokuapp.com/donut/${donut.id}`)
+      // .then((response) => {
+      //   this.setState({
+      //     blogItems: this.state.blogItems.filter((blogItem) => {
+      //       return blog.id !== blogItem.id;
+      //     })
+      //   });
+      // TODO update donut list after delete
+
+      //   return response.data;
+      // })
+      .catch((error) => {
+        console.log("delete blog error", error);
+      });
+  };
+
+  const handleSuccessfulNewSubmission = (donut) => {
+    // TODO add new donut to donut list
+    setModalIsOpen(false);
+  };
+
+  const handleModalClose = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleNewDonutClick = () => {
+    setModalIsOpen(true);
+  };
+
   const handleSuccessfulLogin = () => {
     setLoggedInStatus("LOGGED_IN");
   };

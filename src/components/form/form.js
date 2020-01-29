@@ -16,7 +16,7 @@ export default class BlogForm extends Component {
       blog_status: "",
       content: "",
       featured_image: "",
-      apiUrl: "https://brendoncrave.devcamp.space/portfolio/portfolio_blogs",
+      apiUrl: `https://donut-be.herokuapp.com/donut/`,
       apiAction: "post"
     };
 
